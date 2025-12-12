@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Brain, Code, MessageSquare, Mail, Github, Linkedin, ChevronRight, Sparkles, Zap, Users, Send, Copy, Play } from 'lucide-react'
+import { Brain, Code, MessageSquare, Mail, Github, Linkedin, ChevronRight, Sparkles, Zap, Users, Send, Copy, Play, Building2 } from 'lucide-react'
 
 export default function Home() {
   const [activeDemo, setActiveDemo] = useState('chat')
@@ -609,7 +609,7 @@ async def root():
             准备开始您的AI项目了吗？让我们一起探讨如何用LLM技术为您的业务创造价值
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-8 h-8" />
@@ -637,6 +637,21 @@ async def root():
               <h3 className="text-xl font-semibold mb-2">专业网络</h3>
               <a href="#" className="text-blue-200 hover:text-white transition-colors">
                 LinkedIn 档案
+              </a>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Building2 className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">企业团队</h3>
+              <a
+                href="https://www.cnieco.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-200 hover:text-white transition-colors"
+              >
+                访问官网
               </a>
             </div>
           </div>
