@@ -193,6 +193,7 @@ async def root():
               </div>
             </div>
             <nav className="hidden md:flex space-x-8">
+              <a href="https://sunjieseu.github.io/" className="text-academic-gray hover:text-academic-blue transition-colors">个人主页</a>
               <a href="#demos" className="text-academic-gray hover:text-academic-blue transition-colors">演示</a>
               <a href="#projects" className="text-academic-gray hover:text-academic-blue transition-colors">项目</a>
               <a href="#about" className="text-academic-gray hover:text-academic-blue transition-colors">关于</a>
