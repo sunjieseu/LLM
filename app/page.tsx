@@ -5,22 +5,28 @@ import { Brain, Code, MessageSquare, Mail, Github, Linkedin, ChevronRight, Spark
 
 export default function Home() {
   const [activeDemo, setActiveDemo] = useState('chat')
-  
+
   // Chat demo state
   const [chatMessages, setChatMessages] = useState([
     { role: 'assistant', content: '您好！我是智能对话助手，有什么可以帮助您的吗？' }
   ])
   const [chatInput, setChatInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  
+
   // Code demo state
   const [codePrompt, setCodePrompt] = useState('')
   const [generatedCode, setGeneratedCode] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
-  
+
   // Analysis demo state
   const [analysisText, setAnalysisText] = useState('')
-  const [analysisResult, setAnalysisResult] = useState(null)
+  const [analysisResult, setAnalysisResult] = useState<{
+    sentiment: string;
+    keywords: string[];
+    summary: string;
+    wordCount: number;
+    readingTime: number;
+  } | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
 
   const demos = [
@@ -47,12 +53,12 @@ export default function Home() {
   // Demo functions
   const handleChatSend = async () => {
     if (!chatInput.trim()) return
-    
+
     const userMessage = { role: 'user', content: chatInput }
     setChatMessages(prev => [...prev, userMessage])
     setChatInput('')
     setIsTyping(true)
-    
+
     // Simulate AI response
     setTimeout(() => {
       const responses = [
@@ -66,12 +72,12 @@ export default function Home() {
       setIsTyping(false)
     }, 1500)
   }
-  
+
   const handleCodeGenerate = async () => {
     if (!codePrompt.trim()) return
-    
+
     setIsGenerating(true)
-    
+
     // Simulate code generation
     setTimeout(() => {
       const codeExamples = {
@@ -117,29 +123,29 @@ async def create_item(item: Item):
 async def root():
     return {"message": "Hello World"}`
       }
-      
+
       let code = codeExamples.python // default
       if (codePrompt.toLowerCase().includes('react') || codePrompt.toLowerCase().includes('组件')) {
         code = codeExamples.react
       } else if (codePrompt.toLowerCase().includes('api') || codePrompt.toLowerCase().includes('fastapi')) {
         code = codeExamples.api
       }
-      
+
       setGeneratedCode(code)
       setIsGenerating(false)
     }, 2000)
   }
-  
+
   const handleTextAnalysis = async () => {
     if (!analysisText.trim()) return
-    
+
     setIsAnalyzing(true)
-    
+
     // Simulate text analysis
     setTimeout(() => {
       const result = {
-        sentiment: analysisText.includes('好') || analysisText.includes('棒') || analysisText.includes('优秀') ? '积极' : 
-                  analysisText.includes('差') || analysisText.includes('糟糕') || analysisText.includes('失望') ? '消极' : '中性',
+        sentiment: analysisText.includes('好') || analysisText.includes('棒') || analysisText.includes('优秀') ? '积极' :
+          analysisText.includes('差') || analysisText.includes('糟糕') || analysisText.includes('失望') ? '消极' : '中性',
         keywords: ['技术', '开发', 'AI', '应用'],
         summary: '这段文本主要讨论了技术开发相关的内容，整体语调较为专业。',
         wordCount: analysisText.length,
@@ -213,10 +219,10 @@ async def root():
               从概念到部署，让AI真正为您的业务赋能。
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a 
-              href="#demos" 
+            <a
+              href="#demos"
               className="bg-academic-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center"
               onClick={(e) => {
                 e.preventDefault();
@@ -226,8 +232,8 @@ async def root():
               查看演示项目
               <ChevronRight className="w-5 h-5 ml-2" />
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="border-2 border-academic-blue text-academic-blue px-8 py-4 rounded-lg font-semibold hover:bg-academic-blue hover:text-white transition-colors text-center"
               onClick={(e) => {
                 e.preventDefault();
@@ -272,9 +278,8 @@ async def root():
               return (
                 <div
                   key={demo.id}
-                  className={`academic-paper p-6 rounded-xl cursor-pointer transition-all ${
-                    activeDemo === demo.id ? 'bg-academic-blue text-white' : 'bg-white'
-                  }`}
+                  className={`academic-paper p-6 rounded-xl cursor-pointer transition-all ${activeDemo === demo.id ? 'bg-academic-blue text-white' : 'bg-white'
+                    }`}
                   onClick={() => setActiveDemo(demo.id)}
                 >
                   <Icon className="w-12 h-12 mb-4" />
@@ -298,18 +303,17 @@ async def root():
                 <span className="text-sm">在线演示</span>
               </div>
             </div>
-            
+
             {/* Chat Demo */}
             {activeDemo === 'chat' && (
               <div className="bg-gray-50 rounded-lg p-6 min-h-[400px]">
                 <div className="h-64 overflow-y-auto mb-4 space-y-3">
                   {chatMessages.map((message, index) => (
                     <div key={index} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                        message.role === 'user' 
-                          ? 'bg-academic-blue text-white' 
-                          : 'bg-white border border-gray-200'
-                      }`}>
+                      <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${message.role === 'user'
+                        ? 'bg-academic-blue text-white'
+                        : 'bg-white border border-gray-200'
+                        }`}>
                         {message.content}
                       </div>
                     </div>
@@ -319,8 +323,8 @@ async def root():
                       <div className="bg-white border border-gray-200 px-4 py-2 rounded-lg">
                         <div className="flex space-x-1">
                           <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                         </div>
                       </div>
                     </div>
@@ -368,7 +372,7 @@ async def root():
                     {isGenerating ? '生成中...' : '生成代码'}
                   </button>
                 </div>
-                
+
                 {(generatedCode || isGenerating) && (
                   <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
                     <div className="flex justify-between items-center mb-2">
@@ -414,7 +418,7 @@ async def root():
                     {isAnalyzing ? '分析中...' : '开始分析'}
                   </button>
                 </div>
-                
+
                 {(analysisResult || isAnalyzing) && (
                   <div className="bg-white border border-gray-200 p-4 rounded-lg">
                     <h4 className="font-semibold text-gray-800 mb-3">分析结果：</h4>
@@ -424,11 +428,10 @@ async def root():
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <span className="text-sm text-gray-600">情感倾向：</span>
-                          <span className={`ml-2 px-2 py-1 rounded text-sm ${
-                            analysisResult.sentiment === '积极' ? 'bg-green-100 text-green-800' :
+                          <span className={`ml-2 px-2 py-1 rounded text-sm ${analysisResult.sentiment === '积极' ? 'bg-green-100 text-green-800' :
                             analysisResult.sentiment === '消极' ? 'bg-red-100 text-red-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                              'bg-gray-100 text-gray-800'
+                            }`}>
                             {analysisResult.sentiment}
                           </span>
                         </div>
@@ -478,23 +481,22 @@ async def root():
             {projects.map((project, index) => (
               <div key={index} className="academic-paper bg-white rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    project.status === '已部署' ? 'bg-green-100 text-green-800' :
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${project.status === '已部署' ? 'bg-green-100 text-green-800' :
                     project.status === '开发中' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-blue-100 text-blue-800'
-                  }`}>
+                      'bg-blue-100 text-blue-800'
+                    }`}>
                     {project.status}
                   </span>
                 </div>
-                
+
                 <h3 className="text-xl font-semibold text-academic-gray mb-3">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, techIndex) => (
                     <span
@@ -530,7 +532,7 @@ async def root():
                   如果您有任何AI应用开发需求，欢迎与我联系讨论合作机会。
                 </p>
               </div>
-              
+
               <div className="mt-8 grid grid-cols-2 gap-6">
                 <div className="flex items-center space-x-3">
                   <Users className="w-6 h-6 text-academic-blue" />
@@ -550,7 +552,7 @@ async def root():
                 </div>
               </div>
             </div>
-            
+
             <div className="academic-paper bg-gray-50 rounded-xl p-8">
               <h3 className="text-2xl font-semibold text-academic-gray mb-6">技能专长</h3>
               <div className="space-y-4">
@@ -560,37 +562,37 @@ async def root():
                     <span className="text-academic-blue">95%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-academic-blue h-2 rounded-full" style={{width: '95%'}}></div>
+                    <div className="bg-academic-blue h-2 rounded-full" style={{ width: '95%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-academic-gray font-medium">Python/JavaScript</span>
                     <span className="text-academic-blue">90%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-academic-blue h-2 rounded-full" style={{width: '90%'}}></div>
+                    <div className="bg-academic-blue h-2 rounded-full" style={{ width: '90%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-academic-gray font-medium">系统架构设计</span>
                     <span className="text-academic-blue">85%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-academic-blue h-2 rounded-full" style={{width: '85%'}}></div>
+                    <div className="bg-academic-blue h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="text-academic-gray font-medium">项目管理</span>
                     <span className="text-academic-blue">80%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-academic-blue h-2 rounded-full" style={{width: '80%'}}></div>
+                    <div className="bg-academic-blue h-2 rounded-full" style={{ width: '80%' }}></div>
                   </div>
                 </div>
               </div>
@@ -606,7 +608,7 @@ async def root():
           <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
             准备开始您的AI项目了吗？让我们一起探讨如何用LLM技术为您的业务创造价值
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -617,7 +619,7 @@ async def root():
                 jie.sun@njxzc.edu.cn
               </a>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Github className="w-8 h-8" />
@@ -627,7 +629,7 @@ async def root():
                 查看开源项目
               </a>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Linkedin className="w-8 h-8" />
@@ -638,13 +640,13 @@ async def root():
               </a>
             </div>
           </div>
-          
+
           <div className="bg-white/10 rounded-xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-semibold mb-4">快速咨询</h3>
             <p className="text-blue-100 mb-6">
               有项目想法？发送邮件到 jie.sun@njxzc.edu.cn，我会在24小时内回复您
             </p>
-            <a 
+            <a
               href="mailto:jie.sun@njxzc.edu.cn?subject=LLM应用开发合作咨询&body=您好，我对您的LLM应用开发服务很感兴趣，希望能够进一步了解合作详情。"
               className="bg-white text-academic-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
             >
@@ -664,7 +666,7 @@ async def root():
               </div>
               <span className="text-lg font-semibold">LLM应用开发实验室</span>
             </div>
-            
+
             <div className="text-center md:text-right">
               <p className="text-gray-300 mb-2">© 2024 孙杰. 保留所有权利.</p>
               <p className="text-gray-400 text-sm">专注于大语言模型应用开发与智能体构建</p>
