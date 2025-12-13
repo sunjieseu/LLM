@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>访客统计测试</title>
+</head>
+<body>
+    <h1>访客统计测试</h1>
+    <p>访客数: <span id="visitors">加载中...</span></p>
+    <p>浏览量: <span id="views">加载中...</span></p>
+    <button onclick="clearStats()">清除统计</button>
+    <button onclick="showStats()">显示详细数据</button>
+    
+    <script>
+        // 模拟访客统计逻辑
+        function updateStats() {
+            const getFingerprint = () => {
+                const canvas = document.createElement('canvas')
+                const ctx = canvas.getContext('2d')
+                if (ctx) {
+                    ctx.textBaseline = 'top'
+                    ctx.font = '14px Arial'
+                    ctx.fillText('Browser fingerprint', 2, 2)
+                    return canvas.toDataURL().slice(-50)
+                }
+                return btoa(
+                    navigator.userAgent + 
+                    screen.width + 'x' + screen.height + 
+                    new Date().getTimezoneOffset()
+                ).slice(-20)
+            }
+
+            const fingerprint = getFingerprint()
+            const today = new Date().toISOString().split('T')[0]
+            
+            const statsData = JSON.parse(localStorage.getItem('realStatsData') || '{"visitors": [], "views": 0, "lastUpdate": "", "dailyVisitors": {}}')
+            
+            statsData.views = (statsData.views || 0) + 1
+            
+            const visitorKey = `${fingerprint}_${today}`
+            let isNewVisitor = false
+            
+            if (!statsData.visitors.includes(visitorKey)) {
+                statsData.visitors.push(visitorKey)
+                isNewVisitor = true
+                
+                if (!statsData.dailyVisitors[today]) {
+                    statsData.dailyVisitors[today] = []
+                }
+                if (!statsData.dailyVisitors[today].includes(fingerprint)) {
+                    statsData.dailyVisitors[today].push(fingerprint)
+                }
+            }
+            
+            statsData.lastUpdate = new Date().toISOString()
+            localStorage.setItem('realStatsData', JSON.stringify(statsData))
+            
+            document.getElementById('visitors').textContent = statsData.visitors.length
+            document.getElementById('views').textContent = statsData.views
+            
+            console.log(`${isNewVisitor ? '新' : '重复'}访客, 总访客: ${statsData.visitors.length}, 总浏览: ${statsData.views}`)
+        }
+        
+        function clearStats() {
+            localStorage.removeItem('realStatsData')
+            updateStats()
+        }
+        
+        function showStats() {
+            const data = localStorage.getItem('realStatsData')
+            console.log('统计数据:', JSON.parse(data || '{}'))
+            alert('详细数据已输出到控制台')
+        }
+        
+        // 页面加载时更新统计
+        updateStats()
+    </script>
+</body>
+</html>
