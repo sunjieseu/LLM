@@ -14,7 +14,7 @@ User-agent: Googlebot
 Allow: /
 
 # 网站地图位置
-Sitemap: https://sunjieseu.github.io/sitemap.xml
+Sitemap: https://sunjieseu.github.io/LLM/sitemap.xml
 
 # 爬取延迟（秒）
 Crawl-delay: 1

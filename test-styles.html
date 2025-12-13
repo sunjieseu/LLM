@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双网站样式测试</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'academic-blue': '#1e3a8a',
+                        'academic-navy': '#0f172a',
+                        'academic-gray': '#374151',
+                        'academic-light': '#f8fafc',
+                        'gold': '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .academic-card, .academic-paper {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        
+        .academic-card:hover, .academic-paper:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-academic-light to-white">
+    <div class="min-h-screen p-8">
+        <h1 class="text-4xl font-bold text-academic-gray mb-8 text-center">双网站样式测试</h1>
+        
+        <div class="max-w-6xl mx-auto">
+            <!-- 个人主页样式测试 -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-academic-gray mb-6">个人主页样式 (academic-card)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="academic-card bg-white p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-academic-gray mb-3">学术背景</h3>
+                        <p class="text-gray-600 mb-4">博士、教授，专注于人工智能研究</p>
+                        <a href="https://sunjieseu.github.io/LLM/" 
+                           class="bg-academic-blue text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors inline-flex items-center">
+                            LLM应用开发实验室
+                            <span class="ml-2">→</span>
+                        </a>
+                    </div>
+                    
+                    <div class="academic-card bg-white p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-academic-gray mb-3">研究成果</h3>
+                        <p class="text-gray-600 mb-4">多项AI应用开发项目和学术论文</p>
+                        <div class="flex space-x-2">
+                            <span class="px-3 py-1 bg-academic-blue/10 text-academic-blue rounded-full text-sm">AI</span>
+                            <span class="px-3 py-1 bg-gold/10 text-yellow-700 rounded-full text-sm">研究</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LLM实验室样式测试 -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-academic-gray mb-6">LLM实验室样式 (academic-paper)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="academic-paper bg-white p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-academic-gray mb-3">智能对话</h3>
+                        <p class="text-gray-600 mb-4">基于大语言模型的智能对话系统</p>
+                        <button class="bg-academic-blue text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                            体验演示
+                        </button>
+                    </div>
+                    
+                    <div class="academic-paper bg-white p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-academic-gray mb-3">代码生成</h3>
+                        <p class="text-gray-600 mb-4">自动生成高质量代码</p>
+                        <button class="bg-academic-blue text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                            开始生成
+                        </button>
+                    </div>
+                    
+                    <div class="academic-paper bg-white p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold text-academic-gray mb-3">文本分析</h3>
+                        <p class="text-gray-600 mb-4">智能文本分析和总结</p>
+                        <a href="https://sunjieseu.github.io/" 
+                           class="text-academic-blue hover:text-blue-800 transition-colors inline-flex items-center">
+                            ← 返回个人主页
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 链接测试 -->
+            <section class="bg-academic-blue text-white p-8 rounded-xl">
+                <h2 class="text-3xl font-bold mb-6">网站导航测试</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white/10 p-4 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">个人主页</h3>
+                        <p class="text-blue-100 mb-3">https://sunjieseu.github.io/</p>
+                        <a href="https://sunjieseu.github.io/" 
+                           class="bg-white text-academic-blue px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                            访问个人主页
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white/10 p-4 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">LLM实验室</h3>
+                        <p class="text-blue-100 mb-3">https://sunjieseu.github.io/LLM/</p>
+                        <a href="https://sunjieseu.github.io/LLM/" 
+                           class="bg-white text-academic-blue px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                            访问LLM实验室
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // 测试悬停效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.academic-card, .academic-paper');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    console.log('卡片悬停效果触发');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

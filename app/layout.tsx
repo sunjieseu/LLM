@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     title: 'LLM应用开发实验室 - 孙杰博士 | 大语言模型应用专家',
     description: '孙杰博士专注于大语言模型应用开发，为企业提供AI智能对话、代码生成、文本分析等定制化解决方案。',
     type: 'website',
-    url: 'https://sunjieseu.github.io',
+    url: 'https://sunjieseu.github.io/LLM',
     siteName: 'LLM应用开发实验室',
     locale: 'zh_CN',
     images: [
       {
-        url: 'https://sunjieseu.github.io/og-image.jpg',
+        url: 'https://sunjieseu.github.io/LLM/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'LLM应用开发实验室 - 孙杰博士',
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LLM应用开发实验室 - 孙杰博士',
     description: '专注于大语言模型应用开发与智能体构建',
-    images: ['https://sunjieseu.github.io/og-image.jpg'],
+    images: ['https://sunjieseu.github.io/LLM/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://sunjieseu.github.io',
+    canonical: 'https://sunjieseu.github.io/LLM',
   },
 }
 
@@ -48,7 +48,7 @@ export default function RootLayout({
         <meta name="baidu-site-verification" content="codeva-your-verification-code" />
         <meta name="msvalidate.01" content="your-bing-verification-code" />
         <meta name="google-site-verification" content="your-google-verification-code" />
-        <link rel="canonical" href="https://sunjieseu.github.io" />
+        <link rel="canonical" href="https://sunjieseu.github.io/LLM" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <script
           type="application/ld+json"
@@ -59,7 +59,7 @@ export default function RootLayout({
               "name": "孙杰",
               "jobTitle": "大语言模型应用专家",
               "description": "专注于大语言模型应用开发的博士、教授",
-              "url": "https://sunjieseu.github.io",
+              "url": "https://sunjieseu.github.io/LLM",
               "sameAs": [
                 "https://github.com/sunjieseu"
               ],

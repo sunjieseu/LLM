@@ -5,23 +5,9 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // 移除basePath和assetPrefix，让网站在根域名下运行
-  // basePath: process.env.NODE_ENV === 'production' ? '/LLM' : '',
-  // assetPrefix: process.env.NODE_ENV === 'production' ? '/LLM/' : '',
-  
-  // 确保静态文件正确导出
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap.xml'
-      },
-      {
-        source: '/robots.txt', 
-        destination: '/robots.txt'
-      }
-    ]
-  }
+  // 恢复basePath和assetPrefix配置，确保在/LLM/路径下正常工作
+  basePath: process.env.NODE_ENV === 'production' ? '/LLM' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/LLM/' : '',
 }
 
 module.exports = nextConfig
