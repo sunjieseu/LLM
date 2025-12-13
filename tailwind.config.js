@@ -9,12 +9,18 @@ module.exports = {
     extend: {
       colors: {
         'academic-blue': '#1e3a8a',
+        'academic-navy': '#0f172a',
         'academic-gray': '#374151',
         'academic-light': '#f8fafc',
+        'gold': '#d4af37',
       },
       fontFamily: {
-        'serif': ['Georgia', 'Times New Roman', 'serif'],
+        'serif': ['Crimson Text', 'Georgia', 'Times New Roman', 'serif'],
         'sans': ['Inter', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'bounce-slow': 'bounce 2s infinite',
+        'pulse-slow': 'pulse 3s infinite',
       }
     },
   },

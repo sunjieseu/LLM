@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Brain, Code, MessageSquare, Mail, Github, Linkedin, ChevronRight, Sparkles, Zap, Users, Send, Copy, Play, Building2, Eye, UserCheck } from 'lucide-react'
+import { Brain, Code, MessageSquare, Mail, Github, Linkedin, ChevronRight, Sparkles, Zap, Users, Send, Copy, Play, Building2 } from 'lucide-react'
 
 export default function Home() {
   // 真实访客统计状态

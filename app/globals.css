@@ -2,7 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -38,12 +38,77 @@ a {
   text-decoration: none;
 }
 
+/* Academic Paper Card Styles */
 .academic-paper {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
+  border: 1px solid rgba(229, 231, 235, 0.5);
 }
 
 .academic-paper:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transform: translateY(-2px);
+}
+
+/* Academic Card Styles */
+.academic-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.academic-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Typography */
+.serif-heading {
+  font-family: 'Crimson Text', Georgia, serif;
+}
+
+/* Academic Border */
+.academic-border {
+  border-left: 4px solid #d4af37;
+}
+
+/* Counter Animation */
+.counter-animation {
+  display: inline-block;
+  transition: all 0.7s ease-in-out;
+}
+
+.counter-animation:hover {
+  transform: scale(1.05);
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.7s ease-out;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-academic {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Button Styles */
+.btn-academic {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-academic:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
 }
