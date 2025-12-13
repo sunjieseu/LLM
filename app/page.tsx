@@ -42,7 +42,7 @@ export default function Home() {
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     let canvasData = ''
-    
+
     if (ctx) {
       ctx.textBaseline = 'top'
       ctx.font = '14px Arial'
@@ -790,7 +790,7 @@ async def root():
                 <Linkedin className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">专业网络</h3>
-              <a href="#" className="text-blue-200 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/jie-sun-669634118/" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-white transition-colors">
                 LinkedIn 档案
               </a>
             </div>
