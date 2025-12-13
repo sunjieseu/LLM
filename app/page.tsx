@@ -398,59 +398,6 @@ async def root():
             </a>
           </div>
 
-          {/* Real Visitor Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-8">
-            <div className="text-center bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
-              <div className="flex items-center justify-center mb-2">
-                <UserCheck className="w-5 h-5 text-academic-blue mr-2" />
-                <div className="text-2xl font-bold text-academic-blue">
-                  {visitorStats.loading ? '...' : visitorStats.totalVisitors.toLocaleString()}
-                </div>
-              </div>
-              <div className="text-sm text-gray-600">总访客数</div>
-            </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
-              <div className="flex items-center justify-center mb-2">
-                <Eye className="w-5 h-5 text-academic-blue mr-2" />
-                <div className="text-2xl font-bold text-academic-blue">
-                  {visitorStats.loading ? '...' : visitorStats.totalViews.toLocaleString()}
-                </div>
-              </div>
-              <div className="text-sm text-gray-600">总浏览量</div>
-            </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
-              <div className="flex items-center justify-center mb-2">
-                <UserCheck className="w-5 h-5 text-green-600 mr-2" />
-                <div className="text-2xl font-bold text-green-600">
-                  {visitorStats.loading ? '...' : visitorStats.todayVisitors}
-                </div>
-              </div>
-              <div className="text-sm text-gray-600">今日访客</div>
-            </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
-              <div className="flex items-center justify-center mb-2">
-                <Eye className="w-5 h-5 text-green-600 mr-2" />
-                <div className="text-2xl font-bold text-green-600">
-                  {visitorStats.loading ? '...' : visitorStats.todayViews}
-                </div>
-              </div>
-              <div className="text-sm text-gray-600">今日浏览</div>
-            </div>
-          </div>
-
-          {/* Third-party verification */}
-          <div className="flex justify-center items-center space-x-4 mb-8">
-            <img
-              src="https://hits.sh/sunjieseu.github.io.svg"
-              alt="总访问统计"
-              className="h-5"
-            />
-            <img
-              src="https://hits.sh/sunjieseu.github.io/today.svg"
-              alt="今日访问"
-              className="h-5"
-            />
-          </div>
 
           {/* Project Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
