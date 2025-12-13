@@ -341,7 +341,7 @@ async def root():
                 <Brain className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-academic-gray">南京中科智慧生态科技有限公司-南京邮电大学-南京晓庄学院-人工智能研究院</h1>
+                <div className="text-xl font-bold text-academic-gray">南京中科智慧生态科技有限公司-南京邮电大学-南京晓庄学院-人工智能研究院</div>
                 <p className="text-sm text-gray-600">孙杰 - 博士、教授、大语言模型应用专家</p>
               </div>
             </div>
@@ -365,8 +365,8 @@ async def root():
               专业的LLM应用开发服务
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-academic-gray mb-6 leading-tight">
-              构建下一代
-              <span className="text-academic-blue block">智能应用</span>
+              孙杰博士 - 大语言模型应用开发专家
+              <span className="text-academic-blue block">构建下一代智能应用</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               专注于大语言模型应用开发，为企业和研究机构提供定制化的AI解决方案。
