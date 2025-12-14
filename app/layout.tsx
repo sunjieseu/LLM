@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
-        <meta name="baidu-site-verification" content="codeva-your-verification-code" />
+        <meta name="baidu-site-verification" content="codeva-bqpfwaSrVq" />
         <meta name="msvalidate.01" content="your-bing-verification-code" />
         <meta name="google-site-verification" content="your-google-verification-code" />
         <link rel="canonical" href="https://sunjieseu.github.io/LLM" />
